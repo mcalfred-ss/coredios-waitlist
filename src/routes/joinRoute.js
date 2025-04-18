@@ -1,17 +1,16 @@
+// src/routes/joinRoute.js
 const express = require('express');
 const router = express.Router();
-const Email = require('../models/Email');
+const sendConfirmation = require('../../sendEmails');
 
-router.post('/join', async (req, res) => {
+router.post('/', async (req, res) => {
   const { email } = req.body;
-  if (!email) return res.status(400).json({ success: false, message: 'Email is required' });
-
   try {
-    const newEmail = new Email({ email });
-    await newEmail.save();
-    res.status(201).json({ success: true, message: 'Email saved' });
+    await sendConfirmation(email);
+    res.redirect('/thankyou.html');
   } catch (err) {
-    res.status(400).json({ success: false, message: err.message });
+    console.error(err);
+    res.status(500).send('Error adding to waitlist');
   }
 });
 
