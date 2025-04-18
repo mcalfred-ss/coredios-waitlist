@@ -1,6 +1,6 @@
 // src/routes/joinRoute.js
 const express = require('express');
-const router = express.Router();
+const router  = express.Router();
 const sendConfirmation = require('../../sendEmails');
 
 router.post('/', async (req, res) => {
