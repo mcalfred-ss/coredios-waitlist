@@ -1,0 +1,169 @@
+/* Reset & base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #000 url('img/noise.png') repeat;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+.header-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+.logo { height: 40px; }
+
+/* Main / Hero */
+main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; }
+.hero {
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+.hero-img {
+  width: 100px;
+  margin-bottom: 1rem;
+  filter: invert(100%);
+}
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: .5rem;
+  display: inline-block;
+  position: relative;
+}
+.hero h1::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 2px;
+  background: #fff;
+  animation: underline 1s forwards;
+}
+@keyframes underline { to { width: 100%; } }
+.hero p { margin-bottom: 1.5rem; line-height: 1.4; }
+
+/* Form & Button */
+input[type="email"], .early-access-btn {
+  width: 100%;
+  padding: .75rem;
+  margin-bottom: 1rem;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 1rem;
+  transition: transform .2s, box-shadow .2s, background .2s, color .2s;
+}
+input[type="email"]:focus {
+  box-shadow: 0 0 8px rgba(255,255,255,0.6);
+  outline: none;
+}
+.early-access-btn {
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.early-access-btn:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.3);
+}
+
+/* Footer */
+footer { background: #111; }
+.footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+.footer-inner p { font-size: .9rem; }
+
+/* Thank‑you page styling */
+.thankyou-container {
+  max-width: 500px;
+  margin: 5rem auto;
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #fff;
+  border-radius: 8px;
+}
+
+.thankyou-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.thankyou-container p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Community button */
+.community-btn {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  border: 1px solid #fff;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: transform .2s, box-shadow .2s;
+  border-radius: 4px;
+}
+.community-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.3);
+}
+/* Add these to your existing style.css */
+.thank-you-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.thank-you-card {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.emoji {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.join-community-btn, .home-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.join-community-btn {
+  background: #7289DA; /* Discord color */
+  margin-left: 10px;
+}
+
+.join-community-btn:hover, .home-button:hover {
+  background: #555;
+}
+
+.join-community-btn:hover {
+  background: #5a6fc5;
+}
