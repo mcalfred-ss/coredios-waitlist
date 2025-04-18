@@ -3,9 +3,9 @@ const Email = require('./src/models/Email');
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-  host: 'YOUR_SMTP_HOST',
-  port: 587,
-  secure: false,
+  host: process.env.SMTP_HOST,
+  port: parseInt(process.env.SMTP_PORT, 10),
+  secure: false, // or true if your SMTP uses SSL
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS
@@ -13,8 +13,8 @@ const transporter = nodemailer.createTransport({
 });
 
 async function sendConfirmation(emailAddress) {
-  // save to Mongo (connection was done in server.js)
-  await Email.create({ address: emailAddress });
+  // ⭐ Create using the 'email' field (matches your schema)
+  await Email.create({ email: emailAddress });
 
   // send the confirmation email
   await transporter.sendMail({

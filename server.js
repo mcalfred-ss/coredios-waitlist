@@ -8,7 +8,7 @@ const joinRoute = require('./src/routes/joinRoute');
 
 const app = express();
 
-// 1) Connect to MongoDB (only here!)
+// 1) Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected'))
@@ -18,10 +18,10 @@ mongoose
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 3) Serve static front‑end
+// 3) Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 4) API endpoint
+// 4) API route
 app.use('/api/join', joinRoute);
 
 // 5) Start
