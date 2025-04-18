@@ -1,36 +1,26 @@
-const form = document.getElementById('waitlist-form');
-const emailIn = document.getElementById('email');
+// public/script.js
 
-form.addEventListener('submit', async e => {
+// 1️⃣ Grab your form and email input by ID
+const form = document.getElementById('waitlist-form');
+const emailInput = document.getElementById('email');
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  
-  // Simple client-side validation
-  const email = emailIn.value.trim();
-  if (!email || !email.includes('@')) {
-    alert('Please enter a valid email address');
-    return;
-  }
-  
+  const email = emailInput.value;
+
   try {
+    // 2️⃣ Post to the Express route you mounted at /api/join
     const res = await fetch('/api/join', {
       method: 'POST',
-      headers: { 'Content-Type':'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email })
     });
-    const data = await res.json();
-    console.log('API response:', data);
-    
-    if (data.success) {
-      // Redirect to thank you page regardless of whether the email was already in the database
-      window.location.href = '/thankyou.html';
-      
-      // Clear the form in case they navigate back
-      form.reset();
-    } else {
-      alert(`❌ ${data.message}`);
-    }
+
+    if (!res.ok) throw new Error(`Server error: ${res.status}`);
+    // 3️⃣ On success, redirect to your static thank‑you page
+    window.location.href = '/thankyou.html';
   } catch (err) {
-    alert('Something went wrong. Please try again.');
     console.error(err);
+    alert('Something went wrong. Please try again.');
   }
 });

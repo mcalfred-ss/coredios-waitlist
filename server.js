@@ -8,21 +8,22 @@ const joinRoute = require('./src/routes/joinRoute');
 
 const app = express();
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
+// 1) Connect to MongoDB (only here!)
+mongoose
+  .connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
-// Middleware
+// 2) Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Static assets
+// 3) Serve static front‑end
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API route
+// 4) API endpoint
 app.use('/api/join', joinRoute);
 
-// Start server
+// 5) Start
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server listening on port ${PORT}`));

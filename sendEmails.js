@@ -2,7 +2,6 @@
 const Email = require('./src/models/Email');
 const nodemailer = require('nodemailer');
 
-// set up your SMTP transporter however you had it:
 const transporter = nodemailer.createTransport({
   host: 'YOUR_SMTP_HOST',
   port: 587,
@@ -14,10 +13,10 @@ const transporter = nodemailer.createTransport({
 });
 
 async function sendConfirmation(emailAddress) {
-  // Save to Mongo (we already connected in server.js)
+  // save to Mongo (connection was done in server.js)
   await Email.create({ address: emailAddress });
-  
-  // Send mail
+
+  // send the confirmation email
   await transporter.sendMail({
     from: '"Coredios Team" <no-reply@coredios.com>',
     to: emailAddress,
