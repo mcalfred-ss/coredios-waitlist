@@ -16,5 +16,13 @@
     "mongoose": "^8.13.2",
     "nodemailer": "^6.10.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcalfred-ss/coredios-waitlist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mcalfred-ss/coredios-waitlist/issues"
+  },
+  "homepage": "https://github.com/mcalfred-ss/coredios-waitlist#readme",
   "description": ""
 }

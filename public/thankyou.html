@@ -5,25 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thanks for Joining! - Coredios Waitlist</title>
   <link rel="stylesheet" href="style.css" />
+
 </head>
 <body>
   <header>
     <div class="header-inner">
-      <!-- Logo placeholder -->
-      <img src="img/logo.png" alt="Coredios Logo" class="logo" />
+      <img src="img/Coredioswhite.png" alt="Coredios Logo" class="logo" />
     </div>
   </header>
 
   <main class="thank-you-container">
     <div class="thank-you-card">
       <div class="emoji">🎉</div>
-      <h1 class="welcome-message">Thanks for joining!</h1>
-      <p>You're now on the waitlist. We'll send you an email shortly.</p>
-      
-      <a href="/" class="home-button">Back to Home</a>
-      
-      <a href="https://discord.gg/YourDiscordInvite" class="join-community-btn" target="_blank">
-        Join our Community
+      <h1 class="welcome-message">Thanks for joining the waitlist!</h1>
+      <p>You’ll be the first to know when we launch. Keep an eye on your inbox!</p>
+      <a href="/" class="home-button">← Back to Home</a>
+      <br />
+      <a href="https://linktr.ee/corediosgames" class="join-community-btn" target="_blank">
+        Join our community!
       </a>
     </div>
   </main>
@@ -33,17 +32,5 @@
       <p>&copy; 2025 Coredios. All rights reserved.</p>
     </div>
   </footer>
-
-  <script>
-    // Check if user already existed in database
-    document.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const alreadyExists = urlParams.get('alreadyExists');
-      
-      if (alreadyExists === 'true') {
-        document.querySelector('.welcome-message').textContent = "You're already on our waitlist!";
-      }
-    });
-  </script>
 </body>
 </html>

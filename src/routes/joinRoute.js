@@ -1,24 +1,20 @@
-// src/routes/joinRoute.js
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const sendConfirmation = require('../../sendEmails');
 
-router.post('/', async (req, res) => {
+router.post('/join', async (req, res) => {
   const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).send('Email is required');
+  }
+
   try {
     await sendConfirmation(email);
-    // New signup: email sent & DB insert ok
-    return res.redirect('/thankyou.html');
+    res.redirect('/thankyou.html'); // Redirect to thank-you page
   } catch (err) {
     console.error(err);
-
-    // If it’s a duplicate‑key on the `email` field, treat as success
-    if (err.code === 11000 && err.keyPattern && err.keyPattern.email) {
-      return res.redirect('/thankyou.html');
-    }
-
-    // Otherwise it’s a real error
-    return res.status(500).send('Error adding to waitlist');
+    res.status(500).send('Failed to save email or send message');
   }
 });
 
